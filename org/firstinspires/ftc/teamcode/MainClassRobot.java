@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Blinker;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -28,7 +27,7 @@ public class MainClassRobot extends LinearOpMode {
     private Servo pushServo, nudgeServo;
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         // todo: write your code here
 
@@ -99,14 +98,12 @@ public class MainClassRobot extends LinearOpMode {
             }
 
             if (gamepad1.x) {// left 0
-                sleep(1000);
                 telemetry.addLine("Magazine servo" + pushServo.getPosition());
                 LAUNCH_SERVO.setDirection(DcMotorSimple.Direction.FORWARD);
                 LAUNCH_SERVO.setPower(1.0);
                 // GUIDE_MTR.setPower(1.0);
 
                 pushServo.setPosition(0.25);
-                sleep(1200);
                 pushServo.setPosition(1.0);
 
             } else if (gamepad1.y) {
@@ -118,7 +115,6 @@ public class MainClassRobot extends LinearOpMode {
             if (gamepad1.dpad_up) {
                 LAUNCH_MTR.setDirection(DcMotorSimple.Direction.REVERSE);
                 LAUNCH_MTR.setPower(1.0);
-                // sleep(1300);
 
             } else if (gamepad1.dpad_down) {
                 LAUNCH_SERVO.setPower(0.0);
